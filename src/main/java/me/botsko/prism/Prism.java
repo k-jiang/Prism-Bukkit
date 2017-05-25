@@ -52,7 +52,7 @@ public class Prism extends JavaPlugin {
     /**
      * Connection Pool
      */
-    private static DataSource pool = new DataSource();
+    private static volatile DataSource pool = new DataSource();
 
     /**
      * Protected/private
