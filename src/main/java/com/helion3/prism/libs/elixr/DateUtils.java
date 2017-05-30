@@ -34,20 +34,22 @@ public class DateUtils {
 						int tfValue = Integer.parseInt( m.group(1) );
 						String tfFormat = m.group(2);
 
-						if(tfFormat.equals("w")){
-							cal.add(Calendar.WEEK_OF_YEAR, tfValue);
-						}
-						else if(tfFormat.equals("d")){
-							cal.add(Calendar.DAY_OF_MONTH, tfValue);
-						}
-						else if(tfFormat.equals("h")){
-							cal.add(Calendar.HOUR, tfValue);
-						}
-						else if(tfFormat.equals("m")){
-							cal.add(Calendar.MINUTE, tfValue);
-						}
-						else if(tfFormat.equals("s")){
-							cal.add(Calendar.SECOND, tfValue);
+						switch (tfFormat) {
+							case "w":
+								cal.add(Calendar.WEEK_OF_YEAR, tfValue);
+								break;
+							case "d":
+								cal.add(Calendar.DAY_OF_MONTH, tfValue);
+								break;
+							case "h":
+								cal.add(Calendar.HOUR, tfValue);
+								break;
+							case "m":
+								cal.add(Calendar.MINUTE, tfValue);
+								break;
+							case "s":
+								cal.add(Calendar.SECOND, tfValue);
+								break;
 						}
 					}
 				}
@@ -123,10 +125,10 @@ public class DateUtils {
 			long diffInSeconds = (start.getTime() - end.getTime()) / 1000;
 
 		    long diff[] = new long[] { 0, 0, 0, 0 };
-		    /* sec */	diff[3] = (diffInSeconds >= 60 ? diffInSeconds % 60 : diffInSeconds);
+		    /* sec */	diff[3] = diffInSeconds >= 60 ? diffInSeconds % 60 : diffInSeconds;
 		    /* min */	diff[2] = (diffInSeconds = (diffInSeconds / 60)) >= 60 ? diffInSeconds % 60 : diffInSeconds;
 		    /* hours */	diff[1] = (diffInSeconds = (diffInSeconds / 60)) >= 24 ? diffInSeconds % 24 : diffInSeconds;
-		    /* days */	diff[0] = (diffInSeconds = (diffInSeconds / 24));
+		    /* days */	diff[0] = (diffInSeconds / 24);
 
 		    // Only show days if more than 1
 		    if(diff[0] > 1){

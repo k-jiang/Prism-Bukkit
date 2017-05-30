@@ -107,12 +107,12 @@ public class ItemUtils {
             BookMeta bookB = (BookMeta) metaB;
             
             // Author
-            if( bookA.getAuthor() != null ){
-                if( !bookA.getAuthor().equals( bookB.getAuthor() ) ) return false;
+            if( bookA.getAuthor() != null && !bookA.getAuthor().equals( bookB.getAuthor() )){
+                 return false;
             }
             
-            if( bookA.getTitle() != null ){
-                if( !bookA.getTitle().equals( bookB.getTitle() ) ) return false;
+            if( bookA.getTitle() != null && !bookA.getTitle().equals( bookB.getTitle() )){
+				return false;
             }
             
             // Pages
